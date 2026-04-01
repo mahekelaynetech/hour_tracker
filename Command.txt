@@ -1,0 +1,29 @@
+🔁 When You Change Code (Update GitHub)
+
+After editing files in VS Code:
+
+✅ Step 1: Add changes
+
+
+git add .
+
+
+✅ Step 2: Commit (save version)
+
+
+git commit -m "Updated UI / fixed bug / added feature"
+
+
+
+👉 Write meaningful message (helps later)
+
+✅ Step 3: Push to GitHub
+
+
+git push
+
+
+
+🚀 That’s it
+
+Your repo on GitHub is now updated.
