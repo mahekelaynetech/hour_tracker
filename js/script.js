@@ -1,5 +1,5 @@
 // ===== PASSWORD PROTECTION =====
-const CORRECT_PASSWORD = "    "; // Four spaces
+const CORRECT_PASSWORD = "    ";
 let isAuthenticated = false;
 
 // DOM Elements for password modal

@@ -2016,3 +2016,50 @@ body::before {
         font-size: 1.5rem;
     }
 }
+/* ===== MOBILE-SPECIFIC ANIMATIONS ===== */
+
+/* Gentle pulse for mobile status */
+@media (max-width: 768px) {
+    .status-pulse {
+        animation: mobilePulse 1.5s infinite;
+    }
+    
+    @keyframes mobilePulse {
+        0% { opacity: 0.2; transform: scale(0.95); }
+        50% { opacity: 0.4; transform: scale(1); }
+        100% { opacity: 0.2; transform: scale(0.95); }
+    }
+    
+    /* Simplified shimmer for mobile */
+    .progress-bar-fill::before {
+        animation: mobileShimmer 1.5s infinite;
+    }
+    
+    @keyframes mobileShimmer {
+        0% { left: -100%; }
+        100% { left: 100%; }
+    }
+    
+    /* Optimized orb effect for mobile */
+    .dashboard::before,
+    .dashboard::after {
+        animation-duration: 8s;
+        opacity: 0.1;
+    }
+}
+
+/* Touch Hover Effects */
+@media (hover: hover) and (pointer: fine) {
+    /* Desktop hover styles */
+    .metric-card:hover {
+        transform: translateY(-5px) scale(1.02);
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    /* Mobile tap styles */
+    .metric-card:active {
+        transform: scale(0.98);
+        background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.8));
+    }
+}
