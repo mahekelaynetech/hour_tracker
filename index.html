@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>WorkFlow Pro | Anonymous</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Password Modal -->
+    <div class="password-modal" id="passwordModal">
+        <div class="modal-content glass-card-modal">
+            <div class="modal-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h2>Authentication Required</h2>
+            <p>Enter the password to access the dashboard</p>
+            <div class="password-input-container">
+                <input type="password" id="passwordInput" class="password-input" placeholder="Enter password" autocomplete="off">
+                <button id="unlockBtn" class="unlock-btn">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            <div class="error-message" id="errorMessage"></div>
+        </div>
+    </div>
+
+    <div class="animated-bg"></div>
+    <div class="particles" id="particles"></div>
+    
+    <!-- Fire Particles Container -->
+    <div class="fire-container" id="fireContainer"></div>
+    
+    <!-- Ice Particles Container -->
+    <div class="ice-container" id="iceContainer"></div>
+    
+    <!-- Fireworks Canvas -->
+    <canvas id="fireworksCanvas" class="fireworks-canvas"></canvas>
+    
+    <main class="dashboard fullscreen" id="mainDashboard" style="display: none;">
+        <div class="glass-card fade-in-up">
+            <!-- Header with Anonymous & Date -->
+            <div class="card-header">
+                <div class="identity">
+                    <div class="avatar">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <div class="name-title">
+                        <h1>Anonymous</h1>
+                        <p>✨ Productivity Dashboard ✨</p>
+                    </div>
+                </div>
+                <div class="date-badge" id="todayDate">
+                    <i class="fas fa-calendar-week"></i>
+                    <span>Loading...</span>
+                </div>
+            </div>
+
+            <!-- Enhanced Status Section -->
+            <div class="status-section">
+                <div class="status-chip-large" id="workStatusChip">
+                    <div class="status-pulse" id="statusPulse"></div>
+                    <i class="fas fa-circle" id="statusIcon"></i>
+                    <span id="statusText">Checking...</span>
+                </div>
+                <div class="work-session-badge" id="sessionBadge">
+                    <i class="fas fa-hourglass-half"></i>
+                    <span id="sessionPhase">Morning Session</span>
+                </div>
+            </div>
+
+            <!-- Time Stats Grid - Enhanced -->
+            <div class="stats-grid-enhanced">
+                <div class="stat-item glass-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Start Time</span>
+                        <span class="stat-value highlight">09:30 AM</span>
+                    </div>
+                </div>
+                <div class="stat-item glass-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-stop-circle"></i>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Finish Time</span>
+                        <span class="stat-value highlight">04:30 PM</span>
+                    </div>
+                </div>
+                <div class="stat-item glass-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-simple"></i>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Total Hours</span>
+                        <span class="stat-value highlight">7h 0m</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Metrics - Enhanced -->
+            <div class="metrics-enhanced">
+                <div class="metric-card">
+                    <i class="fas fa-hourglass-end metric-icon"></i>
+                    <div class="metric-info">
+                        <h3>Time Remaining</h3>
+                        <div class="metric-number" id="timeRemaining">--:--</div>
+                        <small>until 4:30 PM</small>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-check-double metric-icon"></i>
+                    <div class="metric-info">
+                        <h3>Time Completed</h3>
+                        <div class="metric-number" id="timeCompleted">--:--</div>
+                        <small>since 9:30 AM</small>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-percent metric-icon"></i>
+                    <div class="metric-info">
+                        <h3>Completion Rate</h3>
+                        <div class="metric-number" id="completionRate">0%</div>
+                        <small>of workday</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-header">
+                    <span><i class="fas fa-chart-line"></i> Work Completion</span>
+                    <span class="progress-percent" id="progressPercent">0%</span>
+                </div>
+                <div class="progress-bar-wrapper">
+                    <div class="progress-bar-fill" id="progressFill">
+                        <div class="glow-effect"></div>
+                    </div>
+                </div>
+                <div class="time-range">
+                    <span><i class="fas fa-sun"></i> 09:30 AM</span>
+                    <div class="milestone-markers">
+                        <span class="milestone lunch-milestone">🍽️ LUNCH BREAK</span>
+                        <span class="milestone">01:00 - 02:00 PM</span>
+                    </div>
+                    <span><i class="fas fa-moon"></i> 04:30 PM</span>
+                </div>
+            </div>
+
+            <!-- Enhanced Live Clock -->
+            <div class="live-info-grid">
+                <div class="live-clock-card">
+                    <i class="fas fa-clock"></i>
+                    <span id="liveTime">--:--:--</span>
+                </div>
+                <div class="energy-level">
+                    <i class="fas fa-bolt"></i>
+                    <span id="energyTip">Focus Mode</span>
+                </div>
+                <div class="task-counter">
+                    <i class="fas fa-tasks"></i>
+                    <span id="taskCounter">Work in progress</span>
+                </div>
+            </div>
+
+            <!-- Lunch Break Special UI Section -->
+            <div class="lunch-section" id="lunchSection">
+                <div class="lunch-card" id="lunchCard">
+                    <div class="lunch-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="lunch-content">
+                        <h3 id="lunchTitle">🍽️ Lunch Break</h3>
+                        <p id="lunchMessage">01:00 PM - 02:00 PM | Recharge & Refresh</p>
+                        <div class="lunch-timer" id="lunchTimer">
+                            <i class="fas fa-hourglass-half"></i>
+                            <span id="lunchTimeLeft">--:--</span>
+                        </div>
+                    </div>
+                    <div class="lunch-decoration">
+                        <i class="fas fa-coffee"></i>
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Alert Display -->
+            <div class="next-alert-container" id="nextAlertContainer" style="display: none;">
+                <i class="fas fa-bell"></i>
+                <span id="nextAlertText">Work Day Complete! 🎉</span>
+            </div>
+
+            <!-- Dynamic Motivation Footer -->
+            <div class="motivation-footer" id="dynamicMessage">
+                <i class="fas fa-brain"></i>
+                <span id="dynamicMsgText">Stay productive! 💪</span>
+            </div>
+
+            <!-- Notification Container -->
+            <div id="notificationContainer" class="notification-container"></div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
