@@ -341,12 +341,15 @@ function calculateCompletedSecondsWithSeconds(currentDateTime) {
     return 0;
 }
 
-// Update Lunch Break UI
+// Update Lunch Break UI - FIXED to only highlight during actual lunch hours
 function updateLunchUI(currentMinutes) {
     const lunchStartMinutes = LUNCH_START.hour * 60 + LUNCH_START.minute;
     const lunchEndMinutes = LUNCH_END.hour * 60 + LUNCH_END.minute;
     
-    if (currentMinutes >= lunchStartMinutes && currentMinutes < lunchEndMinutes) {
+    const isLunchTime = currentMinutes >= lunchStartMinutes && currentMinutes < lunchEndMinutes;
+    
+    if (isLunchTime) {
+        // DURING LUNCH HOURS (1:00 PM - 2:00 PM)
         lunchCard.className = 'lunch-card lunch-active';
         lunchTitle.innerHTML = '🍽️ LUNCH BREAK IN PROGRESS';
         lunchMessage.innerHTML = '01:00 PM - 02:00 PM | Take a break & recharge!';
@@ -366,9 +369,10 @@ function updateLunchUI(currentMinutes) {
             }, 200);
         }
     } else if (currentMinutes < lunchStartMinutes && currentMinutes >= WORK_START.hour * 60 + WORK_START.minute) {
-        lunchCard.className = 'lunch-card lunch-upcoming';
-        lunchTitle.innerHTML = '🍽️ Lunch Break Coming Soon';
-        lunchMessage.innerHTML = '01:00 PM - 02:00 PM | Prepare for break';
+        // BEFORE LUNCH (Working hours - normal display, NOT highlighted)
+        lunchCard.className = 'lunch-card'; // Normal class, no highlight
+        lunchTitle.innerHTML = '🍽️ Lunch Break';
+        lunchMessage.innerHTML = '01:00 PM - 02:00 PM';
         
         const timeToLunch = lunchStartMinutes - currentMinutes;
         if (timeToLunch > 0 && timeToLunch <= 60) {
@@ -376,7 +380,13 @@ function updateLunchUI(currentMinutes) {
         } else {
             lunchTimeLeft.innerHTML = `Starts at 01:00 PM`;
         }
+        
+        if (window.lunchEffectInterval) {
+            clearInterval(window.lunchEffectInterval);
+            window.lunchEffectInterval = null;
+        }
     } else if (currentMinutes >= lunchEndMinutes) {
+        // AFTER LUNCH (Working hours - normal display, NOT highlighted)
         lunchCard.className = 'lunch-card lunch-ended';
         lunchTitle.innerHTML = '✅ Lunch Break Completed';
         lunchMessage.innerHTML = '01:00 PM - 02:00 PM | Refreshed & ready to work!';
@@ -386,8 +396,9 @@ function updateLunchUI(currentMinutes) {
             clearInterval(window.lunchEffectInterval);
             window.lunchEffectInterval = null;
         }
-    } else {
-        lunchCard.className = 'lunch-card lunch-upcoming';
+    } else if (currentMinutes < WORK_START.hour * 60 + WORK_START.minute) {
+        // BEFORE WORK STARTS
+        lunchCard.className = 'lunch-card';
         lunchTitle.innerHTML = '🍽️ Lunch Break';
         lunchMessage.innerHTML = '01:00 PM - 02:00 PM';
         lunchTimeLeft.innerHTML = 'After morning session';

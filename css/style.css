@@ -1022,14 +1022,6 @@ body {
     color: #86efac;
 }
 
-/* Milestone marker for lunch */
-.milestone.lunch-milestone {
-    background: rgba(249, 115, 22, 0.3);
-    color: #fdba74;
-    font-weight: bold;
-    border: 1px solid rgba(249, 115, 22, 0.5);
-}
-
 /* Responsive for lunch section */
 @media (max-width: 768px) {
     .lunch-card {
