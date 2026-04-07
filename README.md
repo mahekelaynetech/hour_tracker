@@ -59,22 +59,6 @@
 | 📱 **Fully Responsive** | Works perfectly on all devices |
 | 🔒 **Password Protected** | Secure access with custom password |
 
-## 🎯 **How It Works**
-
-<div align="center">
-  
-```mermaid
-graph LR
-    A[09:30 AM] --> B[Work Started]
-    B --> C[Morning Session]
-    C --> D[13:00 Lunch Break]
-    D --> E[14:00 Post-Lunch]
-    E --> F[16:30 Work Complete]
-    F --> G[🎉 Celebration!]
-```
-
-</div>
-
 ### 📋 **Work Schedule**
 
 | Time | Activity | Status |
