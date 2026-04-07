@@ -159,28 +159,6 @@ hour_tracker/
 | ![Google Fonts](https://img.shields.io/badge/Google%20Fonts-4285F4?style=flat&logo=googlefonts&logoColor=white) | Typography |
 
 </div>
-
-## 🚀 **Upcoming Features**
-
-- [ ] 📊 Weekly Analytics Dashboard
-- [ ] 📈 Export Reports (PDF/CSV)
-- [ ] ☁️ Cloud Sync Across Devices
-- [ ] 🎵 Focus Music Integration
-- [ ] 📝 Task Management System
-- [ ] 🏆 Achievement Badges
-- [ ] 🌙 Dark/Light Theme Toggle
-- [ ] 📱 PWA Support
-
-## 🤝 **Contributing**
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
 ## 📄 **License**
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

@@ -27,3 +27,7 @@ git push
 🚀 That’s it
 
 Your repo on GitHub is now updated.
+
+git add .
+git commit -m "Updated UI / fixed bug / added feature"
+git push
