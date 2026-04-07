@@ -830,3 +830,59 @@ initializeDashboard = function() {
     initSparkleCursor();
 };
 
+// ===== THEME TOGGLE LOGIC =====
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('i') : null;
+    
+    // Check for saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        if (themeIcon) {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+    }
+    
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            const isLightMode = document.body.classList.contains('light-mode');
+            
+            // Update icon
+            if (themeIcon) {
+                if (isLightMode) {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                } else {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                }
+            }
+            
+            // Add a little spin animation to the icon
+            if (themeIcon) {
+                themeIcon.style.transition = 'transform 0.5s ease';
+                themeIcon.style.transform = 'rotate(360deg)';
+                setTimeout(() => {
+                    themeIcon.style.transform = '';
+                }, 500);
+            }
+            
+            // Save preference
+            localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+            
+            // Optional: Create some particles around the button
+            const btnRect = themeToggleBtn.getBoundingClientRect();
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createSparkle(
+                        btnRect.left + btnRect.width / 2 + (Math.random() - 0.5) * 40,
+                        btnRect.top + btnRect.height / 2 + (Math.random() - 0.5) * 40
+                    );
+                }, i * 100);
+            }
+        });
+    }
+});
