@@ -99,15 +99,6 @@ cd hour_tracker
 # Open in browser
 open index.html
 ```
-
-### 🔐 **Access Credentials**
-
-| Field | Value |
-|-------|-------|
-| Password | `    ` (Four spaces) |
-
-> ⚠️ **Note:** Press the spacebar 4 times and press Enter
-
 ### 📁 **Project Structure**
 
 ```
@@ -236,13 +227,3 @@ Create a file called `preview.gif` or `preview.png` in your repository root show
 - [ScreenToGif](https://www.screentogif.com/) - Create animated GIF
 - [OBS Studio](https://obsproject.com/) - Record video
 - [Chrome DevTools](https://developer.chrome.com/docs/devtools/) - Take screenshots
-
-## 🎯 **Bonus: Add a Badge to Your Repository**
-
-Go to your GitHub repository → Settings → Badges → Add these URLs:
-
-```
-https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
-https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
-https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
-```

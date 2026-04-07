@@ -56,6 +56,12 @@ if (unlockBtn) {
 }
 if (passwordInput) {
     passwordInput.addEventListener('keypress', handleEnterPress);
+    // Fix mobile double-space transforming into a period
+    passwordInput.addEventListener('input', (e) => {
+        if (e.target.value.includes('.')) {
+            e.target.value = e.target.value.replace(/\./g, ' ');
+        }
+    });
 }
 
 window.addEventListener('load', () => {
